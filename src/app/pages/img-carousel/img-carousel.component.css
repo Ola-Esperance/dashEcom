@@ -1,0 +1,8 @@
+.carousel-img {
+    max-width: 150px; /* Ajuster la largeur maximale de l'image */
+    height: auto; /* Permettre à la hauteur de s'ajuster automatiquement */
+  }
+
+  .btn {
+    margin-left: 10px; /* Ajouter un espace entre les boutons */
+  }

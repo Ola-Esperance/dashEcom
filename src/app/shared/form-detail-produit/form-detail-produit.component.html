@@ -1,0 +1,111 @@
+<div class="page-inner">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 ">
+            <form  [formGroup]="editForm"  class="shadow"
+             (ngSubmit)="onSubmit()" >
+                <div class="form-group">
+                    <label for="email2">Titre</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="titre"
+                      id="email2"
+                      
+                      placeholder="Entrer le titre de votre Produit"
+                    />
+                    
+                    
+                </div>
+                <div class="form-group">
+                    <label for="disableinput">Lien Permanent</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="disableinput"
+                      
+                      formControlName="lienPermanent"
+                      placeholder="Enter Input"
+                      
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="email2">Lien Image</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="lienImg"
+                      id="email2"
+                      placeholder="Entrer le lien (URL) de votre Produit "
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="email2">Prix du Produit</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="email2"
+                      placeholder="Entre le prix de votre produit"
+                      formControlName="prix"
+                    />
+                    
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="email2">Autheur</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="email2"
+                      formControlName="autheur"
+                      placeholder="Entrer le nom du Fabricant"
+                    />
+                    <small id="emailHelp2" class="form-text text-muted"
+                      >Facultatif.</small
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="email2">Année d'Edition</label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="email2"
+                      formControlName="anneeEdition"
+                      placeholder="Entrer année de fabrication"
+                    />
+                    <small id="emailHelp2" class="form-text text-muted"
+                      >Facultatif.</small
+                    >
+                </div>
+               
+                  <div class="form-group">
+                    <label for="comment">Description Produit</label>
+                    <textarea class="form-control" formControlName="description" id="comment" rows="5">
+                    </textarea>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="flexCheckDefault"
+                    />
+                    <label
+                      class="form-check-label"
+                      for="flexCheckDefault"
+                    >
+                      Acceptez-vous les termes et conditions
+                    </label>
+                  </div>
+                  <div class="card-action text-end">
+                      <button type="submit" class="btn  btn-success">Crer</button>
+                      <button routerLink="/home"  class="btn btn-danger">Retour</button>
+                    </div>  
+                      
+            </form>  
+           
+          </div>
+          <div class="col-md-3"></div>
+    </div>
+</div>
