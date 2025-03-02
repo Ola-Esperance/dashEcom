@@ -1,0 +1,132 @@
+<div class="page-inner">
+  <div class="page-header">
+    <h3 class="fw-bold mb-3">Catégorie</h3>
+    <ul class="breadcrumbs mb-3">
+      <li class="nav-home">
+        <a routerLink="/home">
+          <i class="icon-home"></i>
+        </a>
+      </li>
+
+      <li class="separator">
+        <i class="icon-arrow-right"></i>
+      </li>
+      <li class="nav-item">
+        <a>Catégories</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Catégories Formulaire</h4>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <form #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm)">
+                <div class="form-group">
+                  <label for="basic-url">
+                    {{ formStatut ? "Modifier" : "Ajouter" }} vos
+                    Catégories</label
+                  >
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3"
+                      >Parametrer vos Catégories</span
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="basic-url"
+                      name="categorie"
+                      [(ngModel)]="categoNom"
+                      required
+                      aria-describedby="basic-addon3"
+                    />
+                  </div>
+                </div>
+
+                <div class="card-action text-end">
+                  <button type="submit" class="btn btn-success">
+                    {{ formStatut ? "Modifier" : "Ajouter" }}
+                  </button>
+                  <button routerLink="/home" class="btn btn-danger">
+                    Retour
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-inner">
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Catégories</div>
+        </div>
+
+        <div class="card-body">
+          <div class="card-sub">Liste de vos Catégories</div>
+          <table class="table mt-3 table-head-bg-success text-center">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Catégories</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let categorie of categories
+                    | paginate
+                      : {
+                          itemsPerPage: itemsPerPage,
+                          currentPage: currentPage
+                        };
+                  let i = index
+                "
+              >
+                <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+                <td>{{ categorie.category }}</td>
+                <td>
+                  <div class="card-action text-end">
+                    <button
+                      (click)="onEdit(categorie.category, categorie.id)"
+                      class="btn btn-success"
+                    >
+                      Modifier
+                    </button>
+                    <button
+                      (click)="onDelette(categorie.id)"
+                      class="btn btn-danger"
+                    >
+                      Suprimer
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="card-action d-flex justify-content-end">
+            <pagination-controls
+              (pageChange)="currentPage = $event"
+            ></pagination-controls>
+            <!-- Contrôles de pagination -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>

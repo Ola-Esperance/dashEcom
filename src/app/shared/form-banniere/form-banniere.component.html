@@ -1,1 +1,52 @@
-<p>form-banniere works!</p>
+<div class="page-inner">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="shadow">
+        <div class="form-group">
+          <label for="titre">Nom Entreprise</label>
+          <input
+            type="text"
+            class="form-control"
+            name="titre"
+            [(ngModel)]="nameSite"
+            formControlName="titre"
+            id="titre"
+            placeholder="Entrer le nom de votre Entreprise"
+          />
+        </div>
+        <div class="form-group">
+          <label>Titre</label>
+          <input
+            type="text"
+            class="form-control"
+            name="titre"
+            formControlName="titre"
+            [(ngModel)]="titleBanner"
+            placeholder="Entrer un titre"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="comment">Description Produit</label>
+          <textarea
+            class="form-control"
+            formControlName="texto"
+            [(ngModel)]="textoBanner"
+            id="comment"
+            rows="5"
+          >
+          </textarea>
+        </div>
+
+        <div class="card-action text-end custom-pading">
+          <button type="submit" class="btn btn-success">Modifier</button>
+          <button routerLink="/home" class="btn btn-danger ms-2 me-4">
+            Retour
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>

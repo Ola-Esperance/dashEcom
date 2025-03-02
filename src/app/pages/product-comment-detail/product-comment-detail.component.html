@@ -1,0 +1,67 @@
+<div class="page-inner">
+  <div class="page-header">
+    <h3 class="fw-bold mb-3">Produit</h3>
+    <ul class="breadcrumbs mb-3">
+      <li class="nav-home">
+        <a routerLink="/home">
+          <i class="icon-home"></i>
+        </a>
+      </li>
+
+      <li class="separator">
+        <i class="icon-arrow-right"></i>
+      </li>
+      <li class="nav-item">
+        <a>Description du Produit</a>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Description</div>
+        </div>
+        <div class="card-body">
+          <table class="table table-typo">
+            <tbody>
+              <tr>
+                <td>
+                  <img
+                    [src]="produitImg"
+                    class="img-fluid"
+                    alt="Image responsive"
+                  />
+                </td>
+                <td>
+                  <h4>{{ produitNom }}</h4>
+                  <p>
+                    {{ commentaire }}
+                  </p>
+                  <h3>Information du Commentateur</h3>
+                  <h6>Nom: {{ nom }}</h6>
+                  <h6>Email: {{ email }}</h6>
+                  <h6>Date de Création: {{ createdAt }}</h6>
+                  <div class="card-action text-end">
+                    <button
+                      routerLink="/home/form_produit_commentaire"
+                      class="btn me-3 btn-warning"
+                    >
+                      Répondre
+                    </button>
+                    <button
+                      routerLink="/home/avis_produit"
+                      class="btn me-3 btn-danger"
+                    >
+                      Retour
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

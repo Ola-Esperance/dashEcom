@@ -1,0 +1,53 @@
+<div class="page-inner">
+  <div class="row py-5">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div class="card-header">
+        <h4>Digital Adapt Dashboard! Commençons</h4>
+        <h6 class="font-weight-light">Connectez-vous pour continuer</h6>
+      </div>
+
+      <form
+        #editForm="ngForm"
+        (ngSubmit)="onSubmit(editForm.value)"
+        class="shadow"
+      >
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            class="form-control"
+            ngModel
+            name="email"
+            required
+            id="email"
+            placeholder="Entrer votre email "
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Mot de Passe</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            ngModel
+            required
+            id="password"
+            placeholder="Entrer votre nom"
+          />
+        </div>
+
+        <div class="card-action p-4 text-end">
+          <button
+            type="submit"
+            [disabled]="editForm.invalid"
+            class="btn btn-success me-3"
+          >
+            CONNEXION
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>

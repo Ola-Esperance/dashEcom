@@ -1,111 +1,142 @@
 <div class="page-inner">
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6 ">
-            <form  [formGroup]="editForm"  class="shadow"
-             (ngSubmit)="onSubmit()" >
-                <div class="form-group">
-                    <label for="email2">Titre</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      formControlName="titre"
-                      id="email2"
-                      
-                      placeholder="Entrer le titre de votre Produit"
-                    />
-                    
-                    
-                </div>
-                <div class="form-group">
-                    <label for="disableinput">Lien Permanent</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="disableinput"
-                      
-                      formControlName="lienPermanent"
-                      placeholder="Enter Input"
-                      
-                    />
-                </div>
-                <div class="form-group">
-                    <label for="email2">Lien Image</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      formControlName="lienImg"
-                      id="email2"
-                      placeholder="Entrer le lien (URL) de votre Produit "
-                    />
-                </div>
-                <div class="form-group">
-                    <label for="email2">Prix du Produit</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="email2"
-                      placeholder="Entre le prix de votre produit"
-                      formControlName="prix"
-                    />
-                    
-                    >
-                </div>
-                <div class="form-group">
-                    <label for="email2">Autheur</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="email2"
-                      formControlName="autheur"
-                      placeholder="Entrer le nom du Fabricant"
-                    />
-                    <small id="emailHelp2" class="form-text text-muted"
-                      >Facultatif.</small
-                    >
-                </div>
-                
-                <div class="form-group">
-                    <label for="email2">Année d'Edition</label>
-                    <input
-                      type="date"
-                      class="form-control"
-                      id="email2"
-                      formControlName="anneeEdition"
-                      placeholder="Entrer année de fabrication"
-                    />
-                    <small id="emailHelp2" class="form-text text-muted"
-                      >Facultatif.</small
-                    >
-                </div>
-               
-                  <div class="form-group">
-                    <label for="comment">Description Produit</label>
-                    <textarea class="form-control" formControlName="description" id="comment" rows="5">
-                    </textarea>
-                  </div>
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      value=""
-                      id="flexCheckDefault"
-                    />
-                    <label
-                      class="form-check-label"
-                      for="flexCheckDefault"
-                    >
-                      Acceptez-vous les termes et conditions
-                    </label>
-                  </div>
-                  <div class="card-action text-end">
-                      <button type="submit" class="btn  btn-success">Crer</button>
-                      <button routerLink="/home"  class="btn btn-danger">Retour</button>
-                    </div>  
-                      
-            </form>  
-           
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card-body">
+        <div class="card-sub">Liste de Produits</div>
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="shadow">
+          <div class="form-group">
+            <label for="titre">Titre</label>
+            <input
+              type="text"
+              class="form-control"
+              name="titre"
+              formControlName="titre"
+              (keyup)="onTitle($event)"
+              id="titre"
+              placeholder="Entrer le titre de votre Produit"
+            />
           </div>
-          <div class="col-md-3"></div>
+
+          <div class="form-group">
+            <label for="lienPermanent">Lien Permanent</label>
+            <input
+              type="text"
+              class="form-control"
+              name="lienPermanent"
+              formControlName="lienPermanent"
+              id="lienPermanent"
+              placeholder="Entrer le lien (URL) de votre Produit "
+            />
+          </div>
+          <div class="form-group">
+            <label for="defaultSelect">Catégorie</label>
+            <select
+              class="form-select form-control"
+              name="categorieId"
+              formControlName="categorieId"
+              id="defaultSelect"
+            >
+              <option value="">Selectionner Catégorie</option>
+              <option
+                *ngFor="let categorie of categories | async"
+                [value]="categorie.id + '-' + categorie.category"
+              >
+                {{ categorie.category }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="lienImg">Lien Image</label>
+            <input
+              type="text"
+              class="form-control"
+              name="lienImg"
+              formControlName="lienImg"
+              id="lienImg"
+              placeholder="Entrer le lien (URL) de votre Produit "
+            />
+          </div>
+          <div class="form-group">
+            <label for="lienVideo">Lien Vidéo</label>
+            <input
+              type="text"
+              class="form-control"
+              name="lienVideo"
+              formControlName="lienVideo"
+              id="lienVideo"
+              placeholder="Entrer le lien (URL) de votre Vidéo ici "
+            />
+          </div>
+          <div class="form-group">
+            <label for="prix">Prix du Produit</label>
+            <input
+              type="number"
+              class="form-control"
+              id="prix"
+              name="prix"
+              placeholder="Entre le prix de votre produit"
+              formControlName="prix"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="lienAchat">Lien d'achat</label>
+            <input
+              type="text"
+              class="form-control"
+              name="lienAchat"
+              formControlName="lienAchat"
+              id="lienAchat"
+              placeholder="Entrer le lien (URL) de votre Produit "
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="descripto">Mini Description</label>
+            <input
+              type="text"
+              class="form-control"
+              id="descripto"
+              name="miniDescription"
+              formControlName="miniDescription"
+              placeholder="Entrer le nom du Fabricant"
+            />
+            <small id="emailHelp2" class="form-text text-muted"
+              >Facultatif.</small
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="comment">Description Produit</label>
+            <angular-editor
+              class="form-control"
+              formControlName="description"
+              id="comment"
+              rows="5"
+              [placeholder]="'Enter text here...'"
+            >
+            </angular-editor>
+          </div>
+
+          <div class="card-action p-4 text-end">
+            <button
+              type="submit"
+              [disabled]="editForm.invalid"
+              class="btn me-3 btn-success"
+            >
+              {{ valider ? "Modifier" : "Ajouter" }}
+            </button>
+            <button
+              routerLink="/home/produit_liste"
+              class="btn me-3 btn-danger"
+            >
+              Retour
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
+    <div class="col-md-3"></div>
+  </div>
 </div>

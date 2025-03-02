@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "coursflexibledashecom": {
+      "hosting": {
+        "dashbEcom": [
+          "coursflexibledashecom"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "coursflexibledashecom"
+  }
+}

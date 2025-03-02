@@ -1,13 +1,21 @@
 export interface Product {
+  id?: string;
+  title: string;
+  permaLink?: string;
+  category: {
+    categoryId: "";
+    categoryName: "";
+  };
+  imgLink: string;
+  videoLink: string;
 
-    id?:string
-    productTitle:string,
-    permaLink:string,
-    productImage:string
-    productPrice:number
-    author?:string,
-    view:number
-    editionYear?:Date
-    produitDescription:string
-    createdAt:Date
+  price: number;
+  buyLink: string;
+
+  view: number;
+  bestSell: boolean;
+  shortDescription: string;
+  description: string;
+
+  createdAt: Date;
 }

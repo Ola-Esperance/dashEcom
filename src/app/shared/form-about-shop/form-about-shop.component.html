@@ -1,0 +1,64 @@
+<div class="page-inner">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card-header">
+        <div class="card-title">Boutique à Propos</div>
+      </div>
+      <div class="card-action mb-3 p-4 text-end">
+        <button routerLink="/home/apropos_shop" class="btn btn-danger">
+          Retour
+        </button>
+      </div>
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="shadow">
+        <div class="form-group">
+          <label for="nom">Titre</label>
+          <input
+            type="text"
+            class="form-control"
+            name="title"
+            formControlName="title"
+            id="nom"
+            placeholder="Entrer le titre de votre Produit"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Lien Image</label>
+          <input
+            type="text"
+            class="form-control"
+            name="imgLink"
+            formControlName="imgLink"
+            id="email"
+            placeholder="Entrer le lien (URL) de votre Produit "
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="comment">Description <i class="fas fa-home"></i> </label>
+          <angular-editor
+            id="comment"
+            class="form-control"
+            rows="5"
+            name="content"
+            formControlName="content"
+            [placeholder]="'Enter text here...'"
+          >
+          </angular-editor>
+        </div>
+
+        <div class="card-action p-4 text-end">
+          <button
+            type="submit"
+            [disabled]="editForm.invalid"
+            class="btn btn-success me-3"
+          >
+            Modifier
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>

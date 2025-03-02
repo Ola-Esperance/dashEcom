@@ -1,0 +1,157 @@
+<div class="page-inner">
+  <div class="page-header">
+    <h3 class="fw-bold mb-3">Réseaux Sociaux</h3>
+    <ul class="breadcrumbs mb-3">
+      <li class="nav-home">
+        <a routerLink="/home">
+          <i class="icon-home"></i>
+        </a>
+      </li>
+
+      <li class="separator">
+        <i class="icon-arrow-right"></i>
+      </li>
+      <li class="nav-item">
+        <a>Réseaux Sociaux les plus populaires </a>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Formulaire Bannière d'acceuil</h4>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <form #coursForm="ngForm" (ngSubmit)="onSubmit(coursForm)">
+                <div class="form-group">
+                  <label for="nom">Titre</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="socialMediaName"
+                    [(ngModel)]="socialName"
+                    id="nom"
+                    required
+                    placeholder="Entrer le titre du service"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="basic-url"> Lien Icon Social </label>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3"
+                      >https://digitaladap.com/users/</span
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="basic-url"
+                      required
+                      name="socialMediaImgLink"
+                      [(ngModel)]="socialImgLink"
+                      aria-describedby="basic-addon3"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="basic-url"> Réseau Social lien </label>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3"
+                      >https://digitaladap.com/users/</span
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="basic-url"
+                      required
+                      name="socialMediaLink"
+                      [(ngModel)]="socialLink"
+                      aria-describedby="basic-addon3"
+                    />
+                  </div>
+                </div>
+
+                <div class="card-action text-end">
+                  <button
+                    [disabled]="coursForm.invalid"
+                    type="submit"
+                    class="btn me-3 btn-success"
+                  >
+                    {{ formStatus ? "Modifier" : "Ajouter" }}
+                  </button>
+                  <button routerLink="/home" class="btn me-3 btn-danger">
+                    Retour
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-head-bg-success mt-3 text-center">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Icon Social</th>
+                <th scope="col">Titre</th>
+
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let social of socialMedias | async; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>
+                  <img
+                    [src]="social.socialMediaImgLink"
+                    class="img-fluid carousel-img"
+                    alt="Image responsive"
+                  />
+                </td>
+                <td>{{ social.socialMediaName }}</td>
+                <td>
+                  <div class="card-action d-flex">
+                    <button
+                      (click)="
+                        onEdit(
+                          social.socialMediaName,
+                          social.socialMediaImgLink,
+
+                          social.socialMediaLink,
+                          social.id
+                        )
+                      "
+                      class="btn me-2 btn-success"
+                    >
+                      Modifier
+                    </button>
+                    <button
+                      (click)="onDelete(social.id)"
+                      class="btn me-2 btn-danger"
+                    >
+                      Suprimer
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>

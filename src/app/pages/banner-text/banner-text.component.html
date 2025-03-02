@@ -1,0 +1,60 @@
+<div class="page-inner">
+  <div class="page-header">
+    <h3 class="fw-bold mb-3">Produit</h3>
+    <ul class="breadcrumbs mb-3">
+      <li class="nav-home">
+        <a routerLink="/home">
+          <i class="icon-home"></i>
+        </a>
+      </li>
+
+      <li class="separator">
+        <i class="icon-arrow-right"></i>
+      </li>
+      <li class="nav-item">
+        <a>Publicité d'Acceuil</a>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Texte d'Acceuil</div>
+        </div>
+        <div class="card-body">
+          <table class="table table-typo">
+            <tbody>
+              <tr *ngFor="let text of bannerText | async">
+                <td>
+                  <div>
+                    <h2>{{ text.siteName }}</h2>
+                    <h1>{{ text.title }}</h1>
+                    <p>{{ text.text }}</p>
+                  </div>
+                  <div class="card-action text-end">
+                    <button
+                      routerLink="/home/banniere_texte_form"
+                      [queryParams]="{
+                        id: text.id,
+                        siteName: text.siteName,
+                        title: text.title,
+                        text: text.text
+                      }"
+                      class="btn btn-success"
+                    >
+                      Modifier
+                    </button>
+                    <button routerLink="/home" class="btn btn-danger ms-2">
+                      Retour
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

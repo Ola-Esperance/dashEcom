@@ -1,0 +1,102 @@
+<div class="page-inner">
+  <div class="page-header">
+    <h3 class="fw-bold mb-3">Chat Bot</h3>
+    <ul class="breadcrumbs mb-3">
+      <li class="nav-home">
+        <a routerLink="/home">
+          <i class="icon-home"></i>
+        </a>
+      </li>
+
+      <li class="separator">
+        <i class="icon-arrow-right"></i>
+      </li>
+      <li class="nav-item">
+        <a>Chat Bot Link</a>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Formulaire Bannière d'acceuil</h4>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <form #coursForm="ngForm" (ngSubmit)="onSubmit(coursForm)">
+                <div class="form-group">
+                  <label for="basic-url">Chat Bot Lien </label>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-url"
+                      >https://digitaladapt.com/users/</span
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="basic-url"
+                      required
+                      name="chatBotLink"
+                      [(ngModel)]="chatBotLink"
+                      aria-describedby="basic-addon3"
+                    />
+                  </div>
+                </div>
+
+                <div class="card-action text-end">
+                  <button
+                    [disabled]="coursForm.invalid"
+                    type="submit"
+                    class="btn me-3 btn-success"
+                  >
+                    Modifier
+                  </button>
+                  <button routerLink="/home" class="btn me-3 btn-danger">
+                    Retour
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-head-bg-success mt-3 text-center">
+            <thead>
+              <tr>
+                <th scope="col">Lien</th>
+
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let link of chatLink | async">
+                <td>{{ link.chatBotLink }}</td>
+                <td>
+                  <div class="card-action text-center">
+                    <button
+                      (click)="onEdit(link.chatBotLink, link.id)"
+                      class="btn btn-success"
+                    >
+                      Modifier
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>

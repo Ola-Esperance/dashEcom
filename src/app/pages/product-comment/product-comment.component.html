@@ -1,0 +1,123 @@
+<div class="page-inner">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Avis et Commentaires</div>
+        </div>
+
+        <div class="card-body">
+          <div class="card-sub">
+            Les Commentaires sur les Produits de la Boutiques
+          </div>
+
+          <table class="table table-head-bg-success mt-3 text-center">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Statut</th>
+
+                <th scope="col">Date</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let comment of comments
+                    | paginate
+                      : {
+                          itemsPerPage: itemsPerPage,
+                          currentPage: currentPage
+                        };
+                  let i = index
+                "
+              >
+                <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+                <td>{{ comment.name }}</td>
+                <td>
+                  <div class="card-action text-end">
+                    <button
+                      *ngIf="!comment.activated"
+                      class="btn btn-success"
+                      (click)="
+                        activeCours(
+                          comment.product.categoryId,
+                          comment.product.productId,
+                          comment.id,
+                          true
+                        )
+                      "
+                    >
+                      Activé
+                    </button>
+                    <button
+                      *ngIf="comment.activated"
+                      class="btn btn-danger"
+                      (click)="
+                        activeCours(
+                          comment.product.categoryId,
+                          comment.product.productId,
+                          comment.id,
+                          false
+                        )
+                      "
+                    >
+                      Desactivé
+                    </button>
+                  </div>
+                </td>
+                <td>{{ comment.createdAt.toMillis() | date }}</td>
+                <td>
+                  <div class="card-action d-flex">
+                    <button
+                      routerLink="/home/avis_produit_detail"
+                      class="btn me-3 btn-success"
+                      [queryParams]="{
+                        id: comment.id,
+                        productName: comment.product.productName,
+                        productImg: comment.product.productImg,
+                        name: comment.name,
+                        email: comment.email,
+                        comment: comment.comment,
+                        createdAt: comment.createdAt.toMillis() | date
+                      }"
+                    >
+                      Détail
+                    </button>
+                    <button
+                      routerLink="/home/produit_liste"
+                      class="btn me-3 btn-warning"
+                    >
+                      Répondre
+                    </button>
+                    <button
+                      (click)="
+                        ondelete(
+                          comment.product.categoryId,
+                          comment.product.productId,
+                          comment.id
+                        )
+                      "
+                      class="btn me-3 btn-danger"
+                    >
+                      Supprimer
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card-action d-flex justify-content-end">
+          <pagination-controls
+            (pageChange)="currentPage = $event"
+          ></pagination-controls>
+          <!-- Contrôles de pagination -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,120 @@
+<div class="page-inner">
+  <div class="page-header">
+    <h3 class="fw-bold mb-3">Comment ça marche</h3>
+    <ul class="breadcrumbs mb-3">
+      <li class="nav-home">
+        <a routerLink="/home">
+          <i class="icon-home"></i>
+        </a>
+      </li>
+
+      <li class="separator">
+        <i class="icon-arrow-right"></i>
+      </li>
+      <li class="nav-item">
+        <a>Comment ça Marche</a>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Modifier Comment ça Marche</h4>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <form #coursForm="ngForm" (ngSubmit)="onSubmit(coursForm)">
+                <div class="form-group">
+                  <label for="basic-url">Titre </label>
+
+                  <div class="input-group mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="basic-url"
+                      required
+                      name="title"
+                      [(ngModel)]="howWorkTitle"
+                      aria-describedby="basic-addon3"
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="basic">Description </label>
+                  <div class="input-group mb-3">
+                    <angular-editor
+                      id="basic"
+                      class="form-control"
+                      rows="5"
+                      required
+                      name="description"
+                      [(ngModel)]="howWorkContent"
+                      [placeholder]="'Entrez votre réponse ici...'"
+                    >
+                    </angular-editor>
+                  </div>
+                </div>
+
+                <div class="card-action text-end">
+                  <button
+                    [disabled]="coursForm.invalid"
+                    type="submit"
+                    class="btn me-3 btn-success"
+                  >
+                    Modifier
+                  </button>
+                  <button routerLink="/home" class="btn me-3 btn-danger">
+                    Retour
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-head-bg-success mt-3 text-center">
+            <thead>
+              <tr>
+                <th scope="col">Titre</th>
+
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let work of howWorks | async; let i = index">
+                <td>
+                  {{ i + 1 }}
+                </td>
+                <td>
+                  {{ work.title }}
+                </td>
+
+                <td>
+                  <div class="card-action text-center">
+                    <button
+                      (click)="onEdit(work.title, work.description, work.id)"
+                      class="btn btn-success"
+                    >
+                      Modifier
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>

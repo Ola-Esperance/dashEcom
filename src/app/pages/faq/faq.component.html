@@ -1,0 +1,136 @@
+<div class="page-inner">
+  <div class="page-header">
+    <h3 class="fw-bold mb-3">Carousel</h3>
+    <ul class="breadcrumbs mb-3">
+      <li class="nav-home">
+        <a routerLink="/home">
+          <i class="icon-home"></i>
+        </a>
+      </li>
+
+      <li class="separator">
+        <i class="icon-arrow-right"></i>
+      </li>
+      <li class="nav-item">
+        <a>FAQ:QUESTION</a>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">FAQ Formulaire</h4>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <form #faq="ngForm" (ngSubmit)="onSubmit(faq)">
+                <div class="form-group">
+                  <label for="nom">Question</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="question"
+                    required
+                    [(ngModel)]="askFaq"
+                    id="nom"
+                    placeholder="Entrer votre question ici"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="comment">Réponse </label>
+                  <angular-editor
+                    class="form-control"
+                    name="respond"
+                    [(ngModel)]="answer"
+                    id="comment"
+                    rows="5"
+                    required
+                    placeholder="Entrer la réponse ici..."
+                  >
+                  </angular-editor>
+                </div>
+
+                <div class="card-action text-end">
+                  <button
+                    [disabled]="faq.invalid"
+                    type="submit"
+                    class="btn me-3 btn-success"
+                  >
+                    {{ formStatus ? "Modifier" : "Ajouter" }}
+                  </button>
+                  <button routerLink="/home/faq" class="btn me-3 btn-danger">
+                    Retour
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-head-bg-success mt-3 text-center">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Question</th>
+                <th scope="col">Réponse</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let faq of faqs
+                    | paginate
+                      : {
+                          itemsPerPage: itemsPerPage,
+                          currentPage: currentPage
+                        };
+                  let i = index
+                "
+              >
+                <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+                <td>
+                  {{ faq.question }}
+                </td>
+                <td [innerHTML]="faq.respond"></td>
+                <td>
+                  <div class="card-action d-flex p-2 text-end">
+                    <button
+                      (click)="onEdit(faq.question, faq.respond, faq.id)"
+                      class="btn me-3 btn-success"
+                    >
+                      Modifier
+                    </button>
+                    <button
+                      (click)="onDelete(faq.id)"
+                      class="btn me-3 btn-danger"
+                    >
+                      Supprimer
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="card-action d-flex justify-content-end">
+            <pagination-controls
+              (pageChange)="currentPage = $event"
+            ></pagination-controls>
+            <!-- Contrôles de pagination -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>

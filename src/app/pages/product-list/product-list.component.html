@@ -1,1 +1,112 @@
-<p>product-list works!</p>
+<div class="page-inner">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Boutique</div>
+        </div>
+
+        <div class="card-body">
+          <div class="card-sub">Liste de Produits</div>
+          <div class="card-action text-end">
+            <button routerLink="/home/form_produit" class="btn btn-success">
+              Ajouter
+            </button>
+          </div>
+
+          <table class="table table-head-bg-success mt-3 text-center">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Image</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Catégorie</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let product of products
+                    | paginate
+                      : {
+                          itemsPerPage: itemsPerPage,
+                          currentPage: currentPage
+                        };
+                  let i = index
+                "
+              >
+                <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+                <td>
+                  <img
+                    [src]="product.imgLink"
+                    class="img-fluid w-50 h-50 carousel-img"
+                    alt="Image responsive"
+                  />
+                </td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.category.categoryName }}</td>
+                <td>
+                  <div class="card-action d-flex text-end">
+                    <button
+                      class="btn me-2 btn-success"
+                      [routerLink]="['/home/form_produit_commentaire']"
+                      [queryParams]="{
+                        id: product.id,
+                        title: product.title,
+
+                        categoryId: product.category.categoryId,
+
+                        imgLink: product.imgLink,
+                        price: product.price,
+                        
+                      }"
+                    >
+                      Commenter
+                    </button>
+                    <button
+                      class="btn me-2 btn-warning"
+                      [routerLink]="['/home/form_produit']"
+                      [queryParams]="{
+                        id: product.id,
+                        title: product.title,
+                        permaLink: product.permaLink,
+
+                        categoryId: product.category.categoryId,
+                        categoryName: product.category.categoryName,
+
+                        imgLink: product.imgLink,
+                        videoLink: product.videoLink,
+                        price: product.price,
+                        buyLink: product.buyLink,
+                        shortDescription: product.shortDescription,
+                        description: product.description
+                      }"
+                    >
+                      Détail
+                    </button>
+
+                    <button
+                      (click)="
+                        ondelete(product.category.categoryId, product.id)
+                      "
+                      class="btn me-3 btn-danger"
+                    >
+                      Supprimer
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="card-action d-flex justify-content-end">
+            <pagination-controls
+              (pageChange)="currentPage = $event"
+            ></pagination-controls>
+            <!-- Contrôles de pagination -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,220 +1,108 @@
+<div class="page-inner">
+  <div class="page-header">
+    <h3 class="fw-bold mb-3">LOGO</h3>
+    <ul class="breadcrumbs mb-3">
+      <li class="nav-home">
+        <a routerLink="/home">
+          <i class="icon-home"></i>
+        </a>
+      </li>
 
+      <li class="separator">
+        <i class="icon-arrow-right"></i>
+      </li>
+      <li class="nav-item">
+        <a>Lien du logo</a>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Formulaire pour modifier le logo</h4>
+        </div>
 
-    <div class="page-inner">
-      <div
-        class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4"
-      >
-        <div>
-          <h3 class="fw-bold mb-3">Dashboard</h3>
-          <h6 class="op-7 mb-2"> Admin Dashboard</h6>
-        </div>
-        <div class="ms-md-auto py-2 py-md-0">
-          <a routerLink="/home" class="btn btn-label-info btn-round me-2">Logo</a>
-          <a routerLink="/home" class="btn btn-primary btn-round">Voir directement</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 col-md-3">
-          <div class="card card-stats card-round">
-            <div class="card-body">
-              <div class="row align-items-center">
-                <div class="col-icon">
-                  <div
-                    class="icon-big text-center icon-primary bubble-shadow-small"
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <form #coursForm="ngForm" (ngSubmit)="onSubmit(coursForm)">
+                <div class="form-group">
+                  <label for="basic-url">Logo Lien </label>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-url"
+                      >https://digitaladapt.com/users/</span
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="basic-url"
+                      required
+                      name="logoLink"
+                      [(ngModel)]="logoLien"
+                      aria-describedby="basic-addon3"
+                    />
+                  </div>
+                </div>
+
+                <div class="card-action text-end">
+                  <button
+                    [disabled]="coursForm.invalid"
+                    type="submit"
+                    class="btn me-3 btn-success"
                   >
-                    <i class="fas fa-users"></i>
-                  </div>
+                    Modifier
+                  </button>
+                  <button routerLink="/home" class="btn me-3 btn-danger">
+                    Retour
+                  </button>
                 </div>
-                <div class="col col-stats ms-3 ms-sm-0">
-                  <div class="numbers">
-                    <p class="card-category">Visitors</p>
-                    <h4 class="card-title">1,294</h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3">
-          <div class="card card-stats card-round">
-            <div class="card-body">
-              <div class="row align-items-center">
-                <div class="col-icon">
-                  <div
-                    class="icon-big text-center icon-info bubble-shadow-small"
-                  >
-                    <i class="fas fa-user-check"></i>
-                  </div>
-                </div>
-                <div class="col col-stats ms-3 ms-sm-0">
-                  <div class="numbers">
-                    <p class="card-category">Subscribers</p>
-                    <h4 class="card-title">1303</h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3">
-          <div class="card card-stats card-round">
-            <div class="card-body">
-              <div class="row align-items-center">
-                <div class="col-icon">
-                  <div
-                    class="icon-big text-center icon-success bubble-shadow-small"
-                  >
-                    <i class="fas fa-luggage-cart"></i>
-                  </div>
-                </div>
-                <div class="col col-stats ms-3 ms-sm-0">
-                  <div class="numbers">
-                    <p class="card-category">Sales</p>
-                    <h4 class="card-title">$ 1,345</h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3">
-          <div class="card card-stats card-round">
-            <div class="card-body">
-              <div class="row align-items-center">
-                <div class="col-icon">
-                  <div
-                    class="icon-big text-center icon-secondary bubble-shadow-small"
-                  >
-                    <i class="far fa-check-circle"></i>
-                  </div>
-                </div>
-                <div class="col col-stats ms-3 ms-sm-0">
-                  <div class="numbers">
-                    <p class="card-category">Order</p>
-                    <h4 class="card-title">576</h4>
-                  </div>
-                </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
-     
-     
     </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-head-bg-success mt-3 text-center">
+            <thead>
+              <tr>
+                <th scope="col">Logo</th>
 
-
-  
-      <div class="page-inner">
-        <div class="page-header">
-          <h3 class="fw-bold mb-3">Logo</h3>
-          <ul class="breadcrumbs mb-3">
-            <li class="nav-home">
-              <a routerLink="/home">
-                <i class="icon-home"></i>
-              </a>
-            </li>
-            <li class="separator">
-              <i class="icon-arrow-right"></i>
-            </li>
-            <li class="nav-item">
-              <a routerLink="/home">Logo</a>
-            </li>
-            <li class="separator">
-              <i class="icon-arrow-right"></i>
-            </li>
-            <li class="nav-item">
-              <a routerLink="/home">Logo Affichage</a>
-            </li>
-          </ul>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-              <div class="card">
-                  <div class="card-header">
-                      <h4 class="card-title">Formulaire Logo</h4>
-  
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let link of logoLink | async">
+                <td>
+                  <img
+                    [src]="link.logoLink"
+                    class="img-fluid carousel-img"
+                    alt="Image responsive"
+                  />
+                </td>
+                <td>
+                  <div class="card-action text-center">
+                    <button
+                      (click)="onEdit(link.logoLink, link.id)"
+                      class="btn btn-success"
+                    >
+                      Modifier
+                    </button>
                   </div>
-  
-                  <div class="card-body">
-                    <div class="row">
-                      
-                      <div class="col ">
-                       
-                        <div class="form-group">
-                          <label for="basic-url"> L'URL du Logo</label>
-                          <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon3"
-                              >https://example.com/users/</span
-                            >
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="basic-url"
-                              aria-describedby="basic-addon3"
-                            />
-                          </div>
-                        </div>
-                       
-                       
-                        <div class="card-action text-end">
-                          <button class="btn btn-success">Modifier</button>
-                          <button routerLink="/home" class="btn btn-danger">Retour</button>
-                        </div>
-                      </div>
-                     
-                    </div>
-                  </div>
-                 
-  
-  
-                 
-                  
-              </div>
-          </div>
-        </div>
-        <div  class="row">
-          <div class="col-lg-2"></div>
-          <div class="col-lg-8">
-            <div class="card">
-              <div class="card-header">
-                <div class="card-title">LOGO</div>
-              </div>
-              
-                <div class="card-body">
-                  <div class="card-sub">
-                    Logo de mon site 
-                  </div>
-                  <table class="table table-head-bg-success mt-3">
-                    <thead>
-                      <tr>
-                        <th scope="col">Icon</th>
-                        <th scope="col">Lien du Logo</th>
-                        <th scope="col">Action</th>
-                       
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td><img src="../../../assets/img/logoproduct2.svg " alt="Logo de mon site" class="logo-img"></td>
-                        <td>Mark</td>
-                        <td><button class="btn btn-success">Modifier</button></td>
-                        
-                      </tr>
-                      
-                    </tbody>
-                  </table>
-                </div>
-              
-              
-            </div>
-            
-          </div>
-          <div class="col-lg-2"></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-   
-   
-  
-
-    
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>

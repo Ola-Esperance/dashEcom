@@ -1,75 +1,70 @@
 <div class="page-inner">
-    <div class="page-header">
-      <h3 class="fw-bold mb-3">Détail Commentaire/ Avis</h3>
-      <ul class="breadcrumbs mb-3">
-        <li class="nav-home">
-          <a href="#">
-            <i class="icon-home"></i>
-          </a>
-        </li>
-        <li class="separator">
-          <i class="icon-arrow-right"></i>
-        </li>
-        <li class="nav-item">
-          <a href="#">Avis</a>
-        </li>
-        <li class="separator">
-          <i class="icon-arrow-right"></i>
-        </li>
-        <li class="nav-item">
-          <a href="#">Commentaire</a>
-        </li>
-      </ul>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">Commentaire</div>
-          </div>
-          <div class="card-body">
-            <table class="table table-typo">
-              <tbody>
-               
-               
-                <tr>
-                    <td><span class="h6">h1. Bootstrap heading</span></td>
-                  <td>
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing
-                      and typesetting industry. Lorem Ipsum has been the
-                      industry's standard dummy text ever since the
-                      1500s, when an unknown printer took a galley of
-                      type and scrambled it to make a type specimen
-                      book.
-                    </p>
-                    <div class="card-action text-end">
-                        <button class="btn btn-success">Accepter</button>
-                        <button routerLink="/home" class="btn btn-danger">Rejeter</button>
-                     </div>
-                  </td>
-    
-              
-               
-              </tbody>
-            </table>
-          </div>
-          <div class="card-footer">
-            <hr />
-            <h5>Email: ola.gmail.com
-                <button class="btn btn-link">
-                    <span class="btn-label">
-                      <i class="fa fa-link"></i>
-                    </span>
-                    Copié
-                  </button></h5>
-            <div class="card-action text-end">
-                <button class="btn btn-success">Répondre</button>
-                <button routerLink="/home" class="btn btn-danger">Send Email</button>
-             </div>
-            
+  <div class="page-header">
+    <h3 class="fw-bold mb-3">Détail Commentaire/ Avis</h3>
+    <ul class="breadcrumbs mb-3">
+      <li class="nav-home">
+        <a href="#">
+          <i class="icon-home"></i>
+        </a>
+      </li>
+      <li class="separator">
+        <i class="icon-arrow-right"></i>
+      </li>
+      <li class="nav-item">
+        <a href="#">Avis</a>
+      </li>
+      <li class="separator">
+        <i class="icon-arrow-right"></i>
+      </li>
+      <li class="nav-item">
+        <a href="#">Commentaire</a>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Commentaire</div>
+        </div>
+        <div class="card-body">
+          <table class="table table-typo">
+            <tbody>
+              <tr>
+                <td>
+                  <span class="h6">{{ name }}</span>
+                </td>
+                <td>
+                  <p>
+                    {{ comment }}
+                  </p>
+                  <h6>{{ createdAt }}</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer">
+          <hr />
+          <h5>
+            {{ email }}
+            <button (click)="copyToClipboard(email)" class="btn btn-link">
+              <span class="btn-label">
+                <i class="fa fa-link"></i>
+              </span>
+              Copié
+            </button>
+          </h5>
+          <div class="card-action text-end">
+            <button (click)="getMailToUrl(email)" class="btn btn-success">
+              Répondre
+            </button>
+            <button routerLink="/home/temoignages" class="btn btn-danger">
+              Retour
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>

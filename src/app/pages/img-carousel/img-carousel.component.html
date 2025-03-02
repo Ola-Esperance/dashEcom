@@ -1,114 +1,116 @@
 <div class="page-inner">
   <div class="page-header">
-    <h3 class="fw-bold mb-3"> Carousel</h3>
+    <h3 class="fw-bold mb-3">Carousel</h3>
     <ul class="breadcrumbs mb-3">
       <li class="nav-home">
         <a routerLink="/home">
           <i class="icon-home"></i>
         </a>
       </li>
-     
+
       <li class="separator">
         <i class="icon-arrow-right"></i>
       </li>
       <li class="nav-item">
-        <a >Image</a>
+        <a>Image</a>
       </li>
     </ul>
-  </div> 
+  </div>
   <div class="row">
     <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Formulaire Logo</h4>
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Formulaire Bannière d'acceuil</h4>
+        </div>
 
-            </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <form #bannerForm="ngForm" (ngSubmit)="onSubmit(bannerForm)">
+                <div class="form-group">
+                  <label for="nom">Catégorie</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="titre"
+                    [(ngModel)]="bannersCategory"
+                    id="nom"
+                    placeholder="Entrer la catégorie de votre Produit"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="basic-url"> L'URL de l'Image</label>
 
-            <div class="card-body">
-              <div class="row">
-                
-                <div class="col ">
-                 
-                  <div class="form-group">
-                    <label for="basic-url"> L'URL du Logo</label>
-                    <div class="input-group mb-3">
-                      <span class="input-group-text" id="basic-addon3"
-                        >https://example.com/users/</span
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="basic-url"
-                        aria-describedby="basic-addon3"
-                      />
-                    </div>
-                  </div>
-                 
-                 
-                  <div class="card-action text-end">
-                    <button class="btn btn-success">Modifier</button>
-                    <button routerLink="/home" class="btn btn-danger">Retour</button>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3"
+                      >https://example.com/users/</span
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="basic-url"
+                      required
+                      name="imgLink"
+                      [(ngModel)]="bannersLink"
+                      aria-describedby="basic-addon3"
+                    />
                   </div>
                 </div>
-               
-              </div>
-            </div>
-           
 
-
-           
-            
-        </div>
-    </div>
-  </div>
-    <div  class="row">
-      <div class="col-lg-2"></div>
-      <div class="col-lg-8">
-        <div class="card">
-          <div class="card-header">
-            <div class="card-action text-end">
-              <button class="btn btn-success">Ajouter</button>
-              
+                <div class="card-action text-end">
+                  <button type="submit" class="btn btn-success">
+                    Modifier
+                  </button>
+                  <button routerLink="/home" class="btn btn-danger">
+                    Retour
+                  </button>
+                </div>
+              </form>
             </div>
-           
           </div>
-          
-            <div class="card-body">
-               
-                
-                  
-              <table class="table table-head-bg-success mt-3 text-center ">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Images</th>
-                    <th scope="col"  >Action</th>
-                   
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>
-                      <img src="../../../assets/img/blogpost.jpg" class="img-fluid carousel-img" alt="Image responsive">
-                  </td>
-                    <td>
-                      <div class="card-action text-end">
-                        <button class="btn btn-success">Modifier</button>
-                        <button routerLink="/home" class="btn btn-danger">Suprimer</button>
-                      </div>
-                    </td>
-                    
-                  </tr>
-                  
-                </tbody>
-              </table>
-            </div>
-          
-          
         </div>
-        
       </div>
-      <div class="col-lg-2"></div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-head-bg-success mt-3 text-center">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Images</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let img of banners | async; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>
+                  <img
+                    [src]="img.imgLink"
+                    class="img-fluid carousel-img"
+                    alt="Image responsive"
+                  />
+                </td>
+                <td>
+                  <div class="card-action text-end">
+                    <button
+                      (click)="onEdit(img.categorie, img.imgLink, img.id)"
+                      class="btn btn-success"
+                    >
+                      Modifier
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>

@@ -1,58 +1,67 @@
 <div class="page-inner">
-    <div class="page-header">
-      <h3 class="fw-bold mb-3">A propos</h3>
-      <ul class="breadcrumbs mb-3">
-        <li class="nav-home">
-          <a routerLink="/home">
-            <i class="icon-home"></i>
-          </a>
-        </li>
-       
-        <li class="separator">
-          <i class="icon-arrow-right"></i>
-        </li>
-        <li class="nav-item">
-          <a >Description de l'Entreprise</a>
-        </li>
-      </ul>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">Description</div>
-          </div>
-          <div class="card-body">
-            <table class="table table-typo">
-              <tbody>
-               
-               
-                <tr>
-                    <td>
-                        <img src="../../../assets/img/blogpost.jpg" class="img-fluid" alt="Image responsive">
-                    </td>
-                  <td>
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing
-                      and typesetting industry. Lorem Ipsum has been the
-                      industry's standard dummy text ever since the
-                      1500s, when an unknown printer took a galley of
-                      type and scrambled it to make a type specimen
-                      book.
-                    </p>
-                    <div class="card-action text-end">
-                        <button class="btn btn-success">Modifier</button>
-                        <button routerLink="/home" class="btn btn-danger">Retour</button>
-                     </div>
-                  </td>
-    
-              
-               
-              </tbody>
-            </table>
-          </div>
-         
+  <div class="page-header">
+    <h3 class="fw-bold mb-3">A propos</h3>
+    <ul class="breadcrumbs mb-3">
+      <li class="nav-home">
+        <a routerLink="/home">
+          <i class="icon-home"></i>
+        </a>
+      </li>
+
+      <li class="separator">
+        <i class="icon-arrow-right"></i>
+      </li>
+      <li class="nav-item">
+        <a>Description de l'Entreprise</a>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Description</div>
+        </div>
+        <div class="card-body">
+          <table class="table table-typo">
+            <tbody>
+              <tr *ngFor="let about of about_us | async">
+                <td>
+                  <img
+                    [src]="about.imgLink"
+                    class="img-fluid"
+                    alt="Image responsive"
+                  />
+                </td>
+                <td>
+                  <p [innerHTML]="about.content"></p>
+                  <div class="card-action text-end">
+                    <button
+                      routerLink="/home/apropos_form"
+                      [queryParams]="{
+                        id: about.id,
+                        title: about.title,
+                        imgLink: about.imgLink,
+                        country: about.country,
+                        adress: about.adress,
+                        email: about.email,
+                        phone: about.phone,
+                        content: about.content
+                      }"
+                      class="btn btn-success"
+                    >
+                      Modifier
+                    </button>
+                    <button routerLink="/home" class="btn btn-danger">
+                      Retour
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
+</div>
